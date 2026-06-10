@@ -1,0 +1,166 @@
+/* ===== 基礎設定 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --base: 20px;      /* 基準字級 */
+  --gap: 20px;       /* 項目間距 */
+}
+
+body {
+  font-size: var(--base);
+  font-family: "Times New Roman", serif;
+  overflow-x: hidden;          /* 任何寬度都不出現橫向捲軸 */
+}
+
+img { display: block; }
+
+/* ===== Navbar（貼齊整個畫面左右）===== */
+.navbar {
+  display: flex;
+  align-items: center;                /* Title 與選單垂直置中 */
+  justify-content: space-between;      /* Title 靠左、選單靠右 */
+  padding: 12px 24px;
+  border-bottom: 1px solid #ddd;
+}
+.navbar__title { font-weight: bold; }
+
+.navbar__menu { display: flex; gap: 24px; }
+.navbar__menu a { text-decoration: none; color: #000; }
+
+/* 漢堡按鈕：桌機/平板隱藏 */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.navbar__burger span {
+  width: 26px; height: 3px; background: #000; border-radius: 2px;
+}
+
+/* ===== 手機右側彈出選單 ===== */
+.popup-menu {
+  position: fixed;
+  top: 0; right: 0;
+  width: 60%; height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,.2);
+  transform: translateX(100%);        /* 預設藏在畫面外 */
+  transition: transform .25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding-top: 80px;
+  z-index: 100;
+}
+.popup-menu.open { transform: translateX(0); }
+.popup-menu a { text-decoration: none; color: #000; }
+.popup-menu__close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none; border: none;
+  font-size: 28px; cursor: pointer;
+}
+
+/* ===== Welcome ===== */
+.welcome {
+  background: #d6e9f5;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;             /* 水平 + 垂直置中 */
+}
+.welcome__text {
+  font-size: calc(var(--base) * 2);    /* 基準的 2 倍 = 40px */
+}
+
+/* ===== Main content ===== */
+.main {
+  width: 1200px;                        /* 桌機固定 1200px */
+  max-width: 100%;
+  margin: var(--gap) auto;             /* 水平置中 */
+  padding: 0 var(--gap);
+}
+
+/* ----- Bars ----- */
+.bars {
+  display: grid;
+  grid-template-columns: 2fr 1fr;      /* 第二列：2/3 + 1/3 */
+  gap: var(--gap);
+  margin-bottom: var(--gap);
+}
+.bars .bar:nth-child(1) { grid-column: span 2; }  /* 第一列：100% */
+
+.bar {
+  display: flex;
+  align-items: center;                 /* 文字垂直置中 */
+  gap: 12px;
+  background: #cfe0ee;
+  height: 50px;
+}
+.bar img {
+  width: 80px; height: 100%;
+  object-fit: cover;                    /* 填滿框框、超出的裁切 */
+}
+
+/* ----- Content Blocks ----- */
+.blocks {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;  /* 5 欄，第一欄 2 倍寬 = 1/3 */
+  gap: var(--gap);
+}
+
+.block {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;         /* 圖維持比例、可裁切 */
+  overflow: hidden;
+}
+.block__star {
+  position: absolute;
+  top: 6px; right: 8px;                /* 星星靠右上 */
+  color: gold;
+  font-size: 22px;
+}
+.block__text {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;        /* 文字區靠底部 */
+  background: rgba(255,255,255,.5);    /* 半透明 */
+  text-align: center;                  /* 文字水平 + 垂直置中 */
+  padding: 6px 0;
+}
+
+/* ===== 平板：600px < 寬度 <= 1200px ===== */
+@media (max-width: 1200px) {
+  .main { width: 90%; }
+
+  /* Bars：第一列 2 欄(50/50)、第二列 1 欄(100%) */
+  .bars { grid-template-columns: 1fr 1fr; }
+  .bars .bar:nth-child(1) { grid-column: auto; }
+  .bars .bar:nth-child(3) { grid-column: span 2; }
+  .bar img { width: 80px; height: 50px; }
+
+  /* Content Blocks：4 欄，最後一列 2 個各 50% */
+  .blocks { grid-template-columns: repeat(4, 1fr); }
+  .blocks .block:nth-child(9),
+  .blocks .block:nth-child(10) { grid-column: span 2; }
+}
+
+/* ===== 手機：360px < 寬度 <= 600px ===== */
+@media (max-width: 600px) {
+  .navbar__menu { display: none; }
+  .navbar__burger { display: flex; }
+
+  /* Bars / Blocks 皆排成 1 欄、滿寬 */
+  .bars { grid-template-columns: 1fr; }
+  .bars .bar:nth-child(1),
+  .bars .bar:nth-child(3) { grid-column: auto; }
+
+  .blocks { grid-template-columns: 1fr; }
+  .blocks .block:nth-child(9),
+  .blocks .block:nth-child(10) { grid-column: auto; }
+}

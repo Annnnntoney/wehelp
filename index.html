@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <header class="navbar">
+    <div class="navbar__title">My Website</div>
+
+    <!-- 桌機 / 平板：水平選單 -->
+    <nav class="navbar__menu">
+      <a href="#">Item 1</a>
+      <a href="#">Item 2</a>
+      <a href="#">Item 3</a>
+      <a href="#">Item 4</a>
+    </nav>
+
+    <!-- 手機：漢堡 icon -->
+    <button class="navbar__burger" id="burgerBtn" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- 手機：右側彈出選單 -->
+  <nav class="popup-menu" id="popupMenu">
+    <button class="popup-menu__close" id="closeBtn" aria-label="關閉選單">&times;</button>
+    <a href="#">Item 1</a>
+    <a href="#">Item 2</a>
+    <a href="#">Item 3</a>
+    <a href="#">Item 4</a>
+  </nav>
+
+  <!-- ===== Welcome ===== -->
+  <section class="welcome">
+    <h1 class="welcome__text">Welcome to MyHome</h1>
+  </section>
+
+  <!-- ===== Main content ===== -->
+  <main class="main">
+    <!-- Bars -->
+    <section class="bars">
+      <div class="bar">
+        <img src="images/original.webp" alt="Promotion 1">
+        <span>Promotion 1</span>
+      </div>
+      <div class="bar">
+        <img src="images/original.webp" alt="Promotion 2">
+        <span>Promotion 2</span>
+      </div>
+      <div class="bar">
+        <img src="images/original.webp" alt="Promotion 3">
+        <span>Promotion 3</span>
+      </div>
+    </section>
+
+    <!-- Content Blocks -->
+    <section class="blocks" id="blocks"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
