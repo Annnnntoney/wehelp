@@ -120,6 +120,10 @@ img { display: block; }
   background-position: center;         /* 圖維持比例、可裁切 */
   overflow: hidden;
 }
+/* R1：第一欄(第 1、6 個)兩倍寬但要「等高」。
+   不用自己的寬度算高度，改由同列的兄弟 block 撐到一樣高（grid 預設 stretch）。 */
+.blocks .block:nth-child(1),
+.blocks .block:nth-child(6) { aspect-ratio: auto; }
 .block__star {
   position: absolute;
   top: 6px; right: 8px;                /* 星星靠右上 */
@@ -163,4 +167,9 @@ img { display: block; }
   .blocks { grid-template-columns: 1fr; }
   .blocks .block:nth-child(9),
   .blocks .block:nth-child(10) { grid-column: auto; }
+
+  /* 手機單欄：每個 block 各自一列、沒有兄弟可撐，
+     把第 1、6 個的高度比例補回來，否則會塌成只剩文字。 */
+  .blocks .block:nth-child(1),
+  .blocks .block:nth-child(6) { aspect-ratio: 4 / 3; }
 }
