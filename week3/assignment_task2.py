@@ -65,7 +65,7 @@ def main():
         url = BASE + prev["href"]
         time.sleep(0.2)
 
-    with open(os.path.join(OUT_DIR, "articles.csv"), "w", encoding="utf-8", newline="") as f:
+    with open(os.path.join(OUT_DIR, "articles.csv"), "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         for row in rows:
             writer.writerow(row)

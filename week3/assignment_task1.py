@@ -64,13 +64,13 @@ def main():
         s["rooms"] += room_count
 
     # ===== 寫出 hotels.csv =====
-    with open(os.path.join(OUT_DIR, "hotels.csv"), "w", encoding="utf-8", newline="") as f:
+    with open(os.path.join(OUT_DIR, "hotels.csv"), "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         for row in rows:
             writer.writerow(row)
 
     # ===== 寫出 districts.csv =====
-    with open(os.path.join(OUT_DIR, "districts.csv"), "w", encoding="utf-8", newline="") as f:
+    with open(os.path.join(OUT_DIR, "districts.csv"), "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         for district, s in stats.items():
             writer.writerow([district, s["hotels"], s["rooms"]])
