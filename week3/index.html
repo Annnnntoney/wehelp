@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <header class="navbar">
+    <div class="navbar__title">My Website</div>
+
+    <!-- 桌機 / 平板：水平選單 -->
+    <nav class="navbar__menu">
+      <a href="#">Item 1</a>
+      <a href="#">Item 2</a>
+      <a href="#">Item 3</a>
+      <a href="#">Item 4</a>
+    </nav>
+
+    <!-- 手機：漢堡 icon -->
+    <button class="navbar__burger" id="burgerBtn" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- 手機：右側彈出選單 -->
+  <nav class="popup-menu" id="popupMenu">
+    <button class="popup-menu__close" id="closeBtn" aria-label="關閉選單">&times;</button>
+    <a href="#">Item 1</a>
+    <a href="#">Item 2</a>
+    <a href="#">Item 3</a>
+    <a href="#">Item 4</a>
+  </nav>
+
+  <!-- ===== Welcome ===== -->
+  <section class="welcome">
+    <h1 class="welcome__text">Welcome to MyHome</h1>
+  </section>
+
+  <!-- ===== Main content（bars 與 blocks 內容由 script.js 動態產生）===== -->
+  <main class="main">
+    <!-- Bars：前 3 個景點 -->
+    <section class="bars" id="bars"></section>
+
+    <!-- Content Blocks：每批 10 個景點 -->
+    <section class="blocks" id="blocks"></section>
+
+    <!-- Load More：點一下再載 10 個景點 -->
+    <div class="load-more">
+      <button class="load-more__btn" id="loadMoreBtn">Load More</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
