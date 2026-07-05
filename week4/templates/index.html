@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登入系統</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="card">
+    <!-- 標題列 -->
+    <div class="card__header">歡迎光臨，請輸入信箱密碼</div>
+
+    <!-- Task 1 / 2 / 3：登入表單 -->
+    <div class="card__body">
+      <h2 class="card__title">登入系統</h2>
+      <form id="loginForm" action="/login" method="post">
+        <div class="field">
+          <label>信箱</label>
+          <input type="text" name="email">
+        </div>
+        <div class="field">
+          <label>密碼</label>
+          <input type="password" name="password">
+        </div>
+        <div class="agree">
+          <span>同意條款</span>
+          <input type="checkbox" id="agree">
+        </div>
+        <button type="submit">登入</button>
+      </form>
+    </div>
+
+    <!-- Task 4：取得旅館資訊 -->
+    <div class="card__body card__body--split">
+      <h2 class="card__title">取得旅館資訊</h2>
+      <div class="field">
+        <label>編號</label>
+        <input type="text" id="hotelId">
+      </div>
+      <button id="hotelBtn">取得</button>
+    </div>
+  </div>
+
+  <script>
+    // Task 1：送出登入表單前，檢查是否勾選同意條款
+    const loginForm = document.getElementById("loginForm");
+    const agree = document.getElementById("agree");
+    loginForm.addEventListener("submit", (e) => {
+      if (!agree.checked) {
+        e.preventDefault();           // 沒勾就攔下、不送出
+        alert("請勾選同意條款");
+      }
+    });
+
+    // Task 4：檢查編號是否為正整數，是就導到 /hotel/編號
+    const hotelBtn = document.getElementById("hotelBtn");
+    const hotelId = document.getElementById("hotelId");
+    hotelBtn.addEventListener("click", () => {
+      const id = hotelId.value.trim();
+      if (!/^\d+$/.test(id) || Number(id) <= 0) {
+        alert("請輸入正整數");
+      } else {
+        window.location.href = "/hotel/" + id;
+      }
+    });
+  </script>
+</body>
+</html>
