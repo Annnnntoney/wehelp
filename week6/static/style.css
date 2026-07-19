@@ -1,0 +1,101 @@
+/* ===== 基礎（沿用第四週的卡片版型）===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Times New Roman", "Microsoft JhengHei", serif;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  width: 420px;
+  max-width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+}
+
+.card__header {
+  background: #2c3a4b;              /* 深藍標題列 */
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+}
+
+.card__body {
+  padding: 30px 40px;
+}
+.card__body--split {
+  border-top: 1px solid #eee;       /* 區塊之間的分隔線 */
+}
+.card__body--center {
+  text-align: center;
+}
+
+.card__title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ===== 表單欄位 ===== */
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.field label { width: 40px; text-align: right; }
+.field input {
+  flex: 1;
+  max-width: 220px;
+  padding: 6px 8px;
+  border: 1px solid #aaa;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 6px 20px;
+  background: #f5f5f5;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  font-family: inherit;
+}
+button:hover { background: #e8e8e8; }
+
+/* ===== 會員頁 ===== */
+.greeting {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+a {
+  color: #3b5998;
+  text-decoration: underline;
+}
+
+/* ===== 錯誤頁 ===== */
+.error-msg {
+  font-size: 18px;
+  color: #3b5998;
+  margin-bottom: 12px;
+}
+
+/* ===== Task 5、6：留言列表 ===== */
+.message-item {
+  margin-bottom: 8px;
+}
+.message-item__name {
+  font-weight: bold;
+}
+.message-item__delete {
+  display: inline;                  /* 蓋掉上面 button 的 block + auto margin */
+  margin: 0 0 0 6px;
+  padding: 0 6px;
+  font-size: 12px;
+}

@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# 編輯器
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# 密碼與環境變數（絕對不要 commit）
+.env
